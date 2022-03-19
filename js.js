@@ -53,15 +53,24 @@ function init(){
         $('#galeria div img')[index].style.backgroundColor='purple'; // itt szétesik
         */
        $("#galeria div")[index].className="divekFormazasa" //osztályt hozunk létre
+       $("#galeria div")[index].addEventListener("click",kattintás)
 
     }
-    
+    // az addEventListener egy esemény kezelő
+    //$("#galeria div")[0].addEventListener("click",kattintás)
 
+}
+function kattintás(){
+    //console.log("kattintottam")
+    //console.log(event.target.id.Source);
+    //var kepindx =id;
+    var txt="<img src='"+kepek[event.target.id].eleresiut+"' alt='nagykep'/>"
+    ID("nagykep").innerHTML=txt;
 }
 function kiirKepek(){
     var txt = " ";
     for (let i = 0; i < kepek.length; i++) {
-        txt = txt + "<div>" + "<h3>"+ kepek[i].cim +"</h3>" + "<img src='"+ kepek[i].eleresiut+ "' class='kepek' alt='Panoráma képek'/>"+
+        txt = txt + "<div>" + "<h3>"+ kepek[i].cim +"</h3>" + "<img id='"+i+"' src='"+ kepek[i].eleresiut+ "' class='kepek' alt='Panoráma képek'/>"+
         "<p>"+kepek[i].leírás+"</p> </div>"
     }
     ID("galeria").innerHTML = txt;
